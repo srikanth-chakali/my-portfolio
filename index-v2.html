@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Srikanth Chakali — Full-Stack Developer & Data Analytics Enthusiast</title>
+<meta name="description" content="Portfolio of Srikanth Chakali — Computer Science student building full-stack MERN applications and data analytics projects.">
+<meta name="theme-color" content="#0A0A12">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0A0A12;
+    --bg-soft: #10101C;
+    --glass: rgba(255,255,255,0.045);
+    --glass-border: rgba(255,255,255,0.09);
+    --text-primary: #F3F2F8;
+    --text-secondary: #A6A3B8;
+    --text-muted: #6D6A80;
+    --rose: #FF6B9D;
+    --orange: #FFA45B;
+    --violet: #7C6CF0;
+    --grad: linear-gradient(120deg, var(--rose), var(--orange) 55%, var(--violet));
+    --shadow-glass: 0 20px 70px -25px rgba(0,0,0,0.6);
+    --radius: 22px;
+    --font-display: 'Sora', sans-serif;
+    --font-body: 'Manrope', sans-serif;
+    --font-mono: 'Space Mono', monospace;
+  }
+  [data-theme="light"] {
+    --bg: #F5F3F7;
+    --bg-soft: #FFFFFF;
+    --glass: rgba(255,255,255,0.6);
+    --glass-border: rgba(20,16,40,0.08);
+    --text-primary: #17141F;
+    --text-secondary: #524E63;
+    --text-muted: #918DA0;
+    --shadow-glass: 0 25px 60px -30px rgba(60,40,90,0.25);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text-primary); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; transition: background 0.4s, color 0.4s; }
+  a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
+  img { max-width: 100%; display: block; }
+  ::selection { background: var(--rose); color: #fff; }
+  :focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; border-radius: 6px; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.015em; }
+
+  .grad-text {
+    background: var(--grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .eyebrow-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--font-mono); font-size: 0.75rem;
+    padding: 7px 16px; border-radius: 30px;
+    background: var(--glass); border: 1px solid var(--glass-border);
+    color: var(--text-secondary); margin-bottom: 20px;
+  }
+  .eyebrow-pill .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--orange); }
+
+  /* ---------- Orbs ---------- */
+  .orb-field { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+  .orb { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.4; will-change: transform; }
+  [data-theme="light"] .orb { opacity: 0.25; }
+  .orb-a { width: 520px; height: 520px; background: var(--rose); top: -180px; left: -120px; animation: float1 24s ease-in-out infinite; }
+  .orb-b { width: 480px; height: 480px; background: var(--violet); top: 30%; right: -160px; animation: float2 30s ease-in-out infinite; }
+  .orb-c { width: 460px; height: 460px; background: var(--orange); bottom: -180px; left: 25%; animation: float3 26s ease-in-out infinite; }
+  @keyframes float1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(90px,50px)} }
+  @keyframes float2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-80px,60px)} }
+  @keyframes float3 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(70px,-60px)} }
+  @media (prefers-reduced-motion: reduce) {
+    .orb { animation: none; }
+    * { scroll-behavior: auto !important; animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+
+  /* ---------- Glass card base ---------- */
+  .glass {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    backdrop-filter: blur(18px);
+    box-shadow: var(--shadow-glass);
+  }
+
+  /* ---------- Nav ---------- */
+  nav { position: sticky; top: 18px; z-index: 100; padding: 0 24px; }
+  .nav-inner {
+    max-width: 1180px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 20px; border-radius: 100px;
+  }
+  .logo { font-family: var(--font-display); font-weight: 800; font-size: 1.05rem; }
+  .logo span { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .nav-links { display: flex; gap: 26px; align-items: center; }
+  .nav-links a { font-size: 0.88rem; color: var(--text-secondary); transition: color 0.2s; font-weight: 600; }
+  .nav-links a:hover { color: var(--text-primary); }
+  .theme-toggle {
+    width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--glass-border);
+    background: var(--glass); cursor: pointer; display: flex; align-items: center; justify-content: center;
+    color: var(--text-primary); transition: transform 0.25s;
+  }
+  .theme-toggle:hover { transform: rotate(20deg) scale(1.05); }
+  .theme-toggle svg { width: 17px; height: 17px; }
+  .menu-btn { display: none; background: none; border: none; color: var(--text-primary); font-size: 1.3rem; cursor: pointer; }
+  @media (max-width: 780px) {
+    .nav-links { position: fixed; top: 82px; left: 24px; right: 24px; flex-direction: column; padding: 24px; gap: 18px; transform: translateY(-140%); transition: transform 0.3s; }
+    .nav-links.open { transform: translateY(0); }
+    .menu-btn { display: block; }
+  }
+
+  /* ---------- Hero bento ---------- */
+  .hero { padding: 70px 0 40px; }
+  .bento { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: minmax(90px, auto); gap: 18px; }
+  .bento-main { grid-column: span 3; grid-row: span 2; padding: 46px; display: flex; flex-direction: column; justify-content: center; }
+  .bento-main h1 { font-size: clamp(2.1rem, 4vw, 3.1rem); line-height: 1.12; margin-bottom: 20px; }
+  .bento-main p { color: var(--text-secondary); font-size: 1.05rem; max-width: 460px; margin-bottom: 30px; }
+  .bento-stat { grid-column: span 2; grid-row: span 1; padding: 22px; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
+  .bento-stat .num { font-family: var(--font-display); font-size: 2.1rem; font-weight: 800; }
+  .bento-stat .label { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); margin-top: 4px; }
+  .bento-photo { grid-column: span 1; grid-row: span 2; display: flex; align-items: center; justify-content: center; font-size: 3rem; background: var(--grad); }
+  @media (max-width: 900px) {
+    .bento { grid-template-columns: repeat(2, 1fr); }
+    .bento-main { grid-column: span 2; grid-row: span 2; }
+    .bento-photo { grid-column: span 2; grid-row: span 1; }
+    .bento-stat { grid-column: span 1; grid-row: span 1; }
+  }
+
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 26px; border-radius: 12px; font-weight: 700; font-size: 0.9rem; cursor: pointer; border: none; transition: transform 0.15s, box-shadow 0.2s; }
+  .btn-grad { background: var(--grad); color: #0A0A12; }
+  .btn-grad:hover { transform: translateY(-2px); box-shadow: 0 14px 30px -10px rgba(255,107,157,0.4); }
+  .btn-outline { border: 1px solid var(--glass-border); color: var(--text-primary); background: transparent; }
+  .btn-outline:hover { border-color: var(--orange); color: var(--orange); }
+
+  /* ---------- Marquee ---------- */
+  .marquee-wrap { overflow: hidden; padding: 26px 0; border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); margin: 60px 0; }
+  .marquee-track { display: flex; gap: 60px; white-space: nowrap; animation: scroll-left 26s linear infinite; width: max-content; }
+  @keyframes scroll-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .marquee-track span { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; color: var(--text-muted); display: flex; align-items: center; gap: 16px; }
+  .marquee-track span::after { content: "✦"; color: var(--orange); font-size: 0.9rem; }
+  @media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
+
+  /* ---------- Sections ---------- */
+  section { padding: 90px 0; }
+  .section-head { max-width: 600px; margin: 0 auto 54px; text-align: center; }
+  .section-head h2 { font-size: clamp(1.9rem, 3.6vw, 2.6rem); }
+  .section-head p { color: var(--text-secondary); margin-top: 14px; }
+
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* ---------- About ---------- */
+  .about-layout { display: flex; flex-direction: column; gap: 20px; }
+  .about-card { padding: 34px; }
+  .about-card .tag-line { font-family: var(--font-mono); font-size: 0.75rem; color: var(--orange); margin-bottom: 14px; }
+  .about-card p { color: var(--text-secondary); margin-bottom: 16px; }
+  .about-card strong { color: var(--text-primary); }
+  .mini-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  @media (max-width: 640px) { .mini-stats { grid-template-columns: 1fr; } }
+  .mini-stat { position: relative; padding: 28px 22px; text-align: left; overflow: hidden; transition: transform 0.3s ease; }
+  .mini-stat::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--stat-accent, var(--rose)); opacity: 0.8; }
+  .mini-stat:hover { transform: translateY(-6px); }
+  .mini-stat .icon { font-size: 1.4rem; margin-bottom: 12px; display: block; }
+  .mini-stat .num { font-family: var(--font-display); font-size: 1.9rem; font-weight: 800; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .mini-stat .label { font-size: 0.82rem; color: var(--text-muted); margin-top: 6px; }
+  .mini-stat--a { --stat-accent: var(--rose); }
+  .mini-stat--b { --stat-accent: var(--orange); }
+  .mini-stat--c { --stat-accent: var(--violet); }
+
+  /* ---------- Skills bento ---------- */
+  .skills-bento { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  @media (max-width: 900px) { .skills-bento { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 540px) { .skills-bento { grid-template-columns: 1fr; } }
+  .skill-tile { position: relative; padding: 28px 22px; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+  .skill-tile::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--tile-accent, var(--violet)); opacity: 0.8; }
+  .skill-tile::after {
+    content: ""; position: absolute; top: -40%; right: -30%; width: 140px; height: 140px;
+    background: var(--tile-accent, var(--violet)); border-radius: 50%; filter: blur(45px); opacity: 0.16; pointer-events: none;
+  }
+  .skill-tile:hover { transform: translateY(-8px); box-shadow: 0 20px 40px -18px var(--tile-accent, var(--violet)); }
+  .skill-tile .tile-icon { font-size: 1.5rem; margin-bottom: 14px; display: block; }
+  .skill-tile h4 { font-size: 0.76rem; font-family: var(--font-mono); color: var(--tile-accent, var(--violet)); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.05em; position: relative; }
+  .skill-tile .tag-row { display: flex; flex-wrap: wrap; gap: 8px; position: relative; }
+  .skill-tile--lang { --tile-accent: var(--rose); }
+  .skill-tile--data { --tile-accent: var(--orange); }
+  .skill-tile--db   { --tile-accent: var(--violet); }
+  .skill-tile--ai   { --tile-accent: #FF8FBE; }
+  .tag { font-family: var(--font-mono); font-size: 0.74rem; padding: 5px 11px; border-radius: 8px; background: rgba(255,255,255,0.06); border: 1px solid var(--glass-border); }
+  [data-theme="light"] .tag { background: rgba(20,16,40,0.05); }
+
+  /* ---------- Projects ---------- */
+  .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+  @media (max-width: 860px) { .projects-grid { grid-template-columns: 1fr; } }
+  .project-card { padding: 0; overflow: hidden; transition: transform 0.3s; }
+  .project-card:hover { transform: translateY(-6px); }
+  .project-head { height: 130px; display: flex; align-items: center; justify-content: center; font-size: 2.6rem; position: relative; }
+  .p1 .project-head { background: linear-gradient(135deg, rgba(255,107,157,0.25), rgba(255,164,91,0.1)); }
+  .p2 .project-head { background: linear-gradient(135deg, rgba(124,108,240,0.28), rgba(255,107,157,0.1)); }
+  .p3 .project-head { background: linear-gradient(135deg, rgba(255,164,91,0.28), rgba(124,108,240,0.1)); }
+  .p4 .project-head { background: linear-gradient(135deg, rgba(166,163,184,0.2), rgba(124,108,240,0.08)); }
+  .project-body { padding: 28px; }
+  .project-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
+  .project-body h3 { font-size: 1.15rem; }
+  .badge-wip { font-family: var(--font-mono); font-size: 0.66rem; padding: 4px 10px; border-radius: 20px; border: 1px solid var(--glass-border); color: var(--text-muted); white-space: nowrap; }
+  .project-body p.desc { color: var(--text-secondary); font-size: 0.94rem; margin-bottom: 16px; }
+  .project-features li { font-size: 0.86rem; color: var(--text-secondary); padding-left: 18px; position: relative; margin-bottom: 6px; }
+  .project-features li::before { content: "→"; position: absolute; left: 0; color: var(--orange); }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 7px; margin: 16px 0 20px; }
+  .project-links { display: flex; gap: 16px; font-family: var(--font-mono); font-size: 0.8rem; }
+  .project-links a { color: var(--text-primary); transition: color 0.2s; }
+  .project-links a:hover { color: var(--orange); }
+  .project-links .disabled { color: var(--text-muted); }
+
+  /* ---------- Education / certs bento ---------- */
+  .edu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  @media (max-width: 860px) { .edu-grid { grid-template-columns: 1fr; } }
+  .edu-card { padding: 26px; }
+  .edu-card .edu-date { font-family: var(--font-mono); font-size: 0.72rem; color: var(--orange); margin-bottom: 10px; }
+  .edu-card h3 { font-size: 1.05rem; margin-bottom: 6px; }
+  .edu-card p { font-size: 0.88rem; color: var(--text-secondary); }
+
+  .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; margin-top: 18px; }
+  .cert-card { padding: 22px; }
+  .cert-card .issuer { font-family: var(--font-mono); font-size: 0.72rem; color: var(--violet); margin-bottom: 8px; }
+  .cert-card h4 { font-size: 0.98rem; margin-bottom: 6px; }
+  .cert-card p { font-size: 0.85rem; color: var(--text-secondary); }
+
+  .achieve-row { display: flex; gap: 16px; margin-top: 20px; flex-wrap: wrap; }
+  .achieve-chip { flex: 1; min-width: 260px; padding: 20px; display: flex; gap: 12px; align-items: flex-start; font-size: 0.88rem; color: var(--text-secondary); }
+  .achieve-chip .star { color: var(--orange); flex-shrink: 0; }
+
+  /* ---------- Contact ---------- */
+  .contact-card { padding: 60px 40px; text-align: center; }
+  .contact-card h2 { font-size: clamp(2rem, 4.5vw, 3rem); margin-bottom: 16px; }
+  .contact-card p { color: var(--text-secondary); max-width: 460px; margin: 0 auto 32px; }
+  .contact-links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .contact-links a { display: flex; align-items: center; gap: 9px; padding: 13px 22px; border-radius: 12px; border: 1px solid var(--glass-border); font-size: 0.86rem; font-weight: 600; transition: transform 0.2s, border-color 0.2s, color 0.2s; }
+  .contact-links a:hover { border-color: var(--orange); color: var(--orange); transform: translateY(-3px); }
+
+  footer { padding: 32px 0 50px; text-align: center; color: var(--text-muted); font-size: 0.82rem; }
+
+  /* ---------- Contact form ---------- */
+  .contact-form { display: flex; flex-direction: column; gap: 18px; max-width: 560px; margin: 40px auto 0; text-align: left; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 560px) { .form-row { grid-template-columns: 1fr; } }
+  .form-field { display: flex; flex-direction: column; gap: 8px; }
+  .form-field label { font-family: var(--font-mono); font-size: 0.76rem; color: var(--text-secondary); }
+  .form-field input, .form-field textarea {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--glass-border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 0.94rem;
+    resize: vertical;
+    transition: border-color 0.2s;
+  }
+  [data-theme="light"] .form-field input, [data-theme="light"] .form-field textarea { background: rgba(20,16,40,0.03); }
+  .form-field input:focus, .form-field textarea:focus { border-color: var(--orange); }
+  .form-status {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    min-height: 1.2em;
+    text-align: center;
+    padding: 0;
+    border-radius: 10px;
+    transition: padding 0.2s ease;
+  }
+  .form-status:empty { padding: 0; }
+  .form-status--info { padding: 12px 16px; background: rgba(124,108,240,0.12); border: 1px solid rgba(124,108,240,0.3); color: var(--violet); }
+  .form-status--success { padding: 12px 16px; background: rgba(94,234,212,0.12); border: 1px solid rgba(94,234,212,0.35); color: #5EEAD4; }
+  .form-status--error { padding: 12px 16px; background: rgba(255,107,157,0.12); border: 1px solid rgba(255,107,157,0.35); color: var(--rose); }
+</style>
+</head>
+<body>
+
+<div class="orb-field" aria-hidden="true">
+  <div class="orb orb-a"></div>
+  <div class="orb orb-b"></div>
+  <div class="orb orb-c"></div>
+</div>
+
+<nav>
+  <div class="nav-inner glass">
+    <a href="javascript:void(0)" data-scroll="top" class="logo">Sri<span>.</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="javascript:void(0)" data-scroll="about">About</a></li>
+      <li><a href="javascript:void(0)" data-scroll="skills">Skills</a></li>
+      <li><a href="javascript:void(0)" data-scroll="projects">Projects</a></li>
+      <li><a href="javascript:void(0)" data-scroll="education">Education</a></li>
+      <li><a href="javascript:void(0)" data-scroll="certifications">Certifications</a></li>
+      <li><a href="javascript:void(0)" data-scroll="contact">Contact</a></li>
+    </ul>
+    <div style="display:flex; align-items:center; gap:12px;">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark and light theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation menu">☰</button>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+  <header class="hero wrap">
+    <div class="bento">
+      <div class="bento-main glass reveal">
+        <div class="eyebrow-pill"><span class="dot"></span> Open to internships</div>
+        <h1>Hi, I'm Srikanth — I build <span class="grad-text">full-stack products</span> and turn data into decisions.</h1>
+        <p>Computer Science student crafting MERN applications and analytics dashboards, one shipped project at a time.</p>
+        <div style="display:flex; gap:14px; flex-wrap:wrap;">
+          <a href="javascript:void(0)" data-scroll="projects" class="btn btn-grad">View Projects</a>
+          <a href="Srikanth_Chakali_Resume.pdf" download class="btn btn-outline">Download Resume</a>
+        </div>
+      </div>
+      <div class="bento-photo glass reveal">🧑‍💻</div>
+      <div class="bento-stat glass reveal"><div class="num">4</div><div class="label">PROJECTS SHIPPED</div></div>
+      <div class="bento-stat glass reveal"><div class="num">4</div><div class="label">CERTIFICATIONS</div></div>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="marquee-wrap">
+      <div class="marquee-track">
+        <span>Python</span><span>SQL</span><span>React</span><span>Node.js</span><span>MongoDB</span><span>Express</span><span>Pandas</span><span>Plotly</span><span>Tableau</span>
+        <span>Python</span><span>SQL</span><span>React</span><span>Node.js</span><span>MongoDB</span><span>Express</span><span>Pandas</span><span>Plotly</span><span>Tableau</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>A developer who likes <span class="grad-text">both sides</span> of the stack</h2>
+      </div>
+      <div class="about-layout">
+        <div class="about-card glass reveal">
+          <div class="tag-line">WHO I AM</div>
+          <p>I'm a <strong>B.Tech Computer Science student</strong> at G. Pullaiah College of Engineering and Technology (2023–2027), building a solid foundation in Python, SQL, and Java while learning to ship complete applications.</p>
+          <p>My work spans <strong>full-stack MERN development</strong> — authentication, admin dashboards, database design — and <strong>data analytics</strong>, using Pandas, Plotly, and Matplotlib to turn raw datasets into readable insight.</p>
+          <p>Backed by structured learning through <strong>IBM SkillsBuild, AWS, FreeCodeCamp</strong>, and a <strong>Deloitte data analytics simulation</strong> on Forage.</p>
+        </div>
+        <div class="mini-stats">
+          <div class="mini-stat mini-stat--a glass reveal"><span class="icon">🎓</span><div class="num">2027</div><div class="label">Expected Graduation</div></div>
+          <div class="mini-stat mini-stat--b glass reveal"><span class="icon">💻</span><div class="num">6 week</div><div class="label">Python Internship</div></div>
+          <div class="mini-stat mini-stat--c glass reveal"><span class="icon">🗣️</span><div class="num">3+</div><div class="label">Languages Used</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Technical <span class="grad-text">skills</span></h2>
+        <p>Every skill here is tied to a real project — no filler.</p>
+      </div>
+      <div class="skills-bento">
+        <div class="skill-tile skill-tile--lang glass reveal"><span class="tile-icon">🧩</span><h4>Languages</h4><div class="tag-row"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Java</span></div></div>
+        <div class="skill-tile skill-tile--data glass reveal"><span class="tile-icon">📊</span><h4>Data & Analytics</h4><div class="tag-row"><span class="tag">Pandas</span><span class="tag">Plotly</span><span class="tag">Matplotlib</span></div></div>
+        <div class="skill-tile skill-tile--db glass reveal"><span class="tile-icon">🗄️</span><h4>Databases</h4><div class="tag-row"><span class="tag">MySQL</span><span class="tag">Streamlit</span></div></div>
+        <div class="skill-tile skill-tile--ai glass reveal"><span class="tile-icon">🤖</span><h4>AI / ML</h4><div class="tag-row"><span class="tag">Fundamentals of AI</span><span class="tag">Applied ML</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Things I've <span class="grad-text">built</span></h2>
+        <p>Four projects across full-stack development and data analytics.</p>
+      </div>
+      <div class="projects-grid">
+
+        <div class="project-card p1 glass reveal">
+          <div class="project-head">₹</div>
+          <div class="project-body">
+            <div class="project-top"><h3>Personal Expense Tracker</h3></div>
+            <p class="desc">A transaction tracker with a MySQL data layer and Plotly visualizations for budgeting decisions. Deployed and live.</p>
+            <ul class="project-features">
+              <li>Interactive Plotly charts for spending analysis</li>
+              <li>Structured MySQL schema for transactions</li>
+              <li>Deployed as a live Streamlit app</li>
+            </ul>
+            <div class="project-tags"><span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">MySQL</span><span class="tag">Plotly</span></div>
+            <div class="project-links">
+              <a href="https://github.com/srikanth-chakali/personal_expense_tracker" target="_blank" rel="noopener">↗ GitHub</a>
+              <a href="https://personal-expense-tracker-1-in2n.onrender.com/" target="_blank" rel="noopener">↗ Live Demo</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card p2 glass reveal">
+          <div class="project-head">📚</div>
+          <div class="project-body">
+            <div class="project-top"><h3>BookStore — MERN App</h3></div>
+            <p class="desc">A full-stack bookstore with JWT auth, an admin dashboard, and a soft-delete data pattern for safe record management.</p>
+            <ul class="project-features">
+              <li>JWT authentication with protected routes</li>
+              <li>Admin panel for inventory & orders</li>
+              <li>Soft-delete pattern with React Context</li>
+            </ul>
+            <div class="project-tags"><span class="tag">MongoDB</span><span class="tag">Express</span><span class="tag">React</span><span class="tag">Node.js</span></div>
+            <div class="project-links"><span class="disabled">⌁ Private repo — available on request</span></div>
+          </div>
+        </div>
+
+        <div class="project-card p3 glass reveal">
+          <div class="project-head">📈</div>
+          <div class="project-body">
+            <div class="project-top"><h3>Sales Data Analysis</h3></div>
+            <p class="desc">Exploratory analysis of sales datasets uncovering revenue trends and seasonal patterns, backed by SQL queries.</p>
+            <ul class="project-features">
+              <li>Matplotlib dashboards for KPIs</li>
+              <li>SQL queries for aggregation</li>
+              <li>Trend analysis with Pandas</li>
+            </ul>
+            <div class="project-tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Matplotlib</span><span class="tag">SQL</span></div>
+            <div class="project-links"><a href="https://github.com/srikanth-chakali/sales-data-analysis" target="_blank" rel="noopener">↗ GitHub</a></div>
+          </div>
+        </div>
+
+        <div class="project-card p4 glass reveal">
+          <div class="project-head">🌾</div>
+          <div class="project-body">
+            <div class="project-top"><h3>Crop Price Prediction</h3><span class="badge-wip">work in progress</span></div>
+            <p class="desc">A machine learning system to forecast crop prices from historical trends — applying AI/ML fundamentals to a real regression problem.</p>
+            <ul class="project-features">
+              <li>Historical price data collection & cleaning</li>
+              <li>Regression modeling for forecasting</li>
+              <li>Planned dashboard for insights</li>
+            </ul>
+            <div class="project-tags"><span class="tag">Python</span><span class="tag">Machine Learning</span><span class="tag">Pandas</span></div>
+            <div class="project-links"><span class="disabled">⌁ In development — repo coming soon</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="wrap">
+      <div class="section-head"><h2>Education & <span class="grad-text">experience</span></h2></div>
+      <div class="edu-grid">
+        <div class="edu-card glass reveal"><div class="edu-date">2023 — 2027</div><h3>B.Tech in Computer Science</h3><p>G. Pullaiah College of Engineering and Technology</p></div>
+        <div class="edu-card glass reveal"><div class="edu-date">2021 — 2023</div><h3>Intermediate (MPC)</h3><p>Board of Intermediate Education, Andhra Pradesh</p></div>
+        <div class="edu-card glass reveal"><div class="edu-date">May — Jul 2025</div><h3>Python Programming Intern</h3><p>InternPe — 6-week internship in Python scripting & app development</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications">
+    <div class="wrap">
+      <div class="section-head"><h2>Certifications & <span class="grad-text">simulations</span></h2></div>
+      <div class="cert-grid">
+        <div class="cert-card glass reveal"><div class="issuer">IBM SKILLSBUILD</div><h4>Intro to AI & Fundamentals of AI</h4></div>
+        <div class="cert-card glass reveal"><div class="issuer">AWS</div><h4>Cloud Quest: Generative AI Practitioner</h4></div>
+        <div class="cert-card glass reveal"><div class="issuer">FORAGE — JUN 25, 2026</div><h4>Deloitte Data Analytics Job Simulation</h4><p>Tableau dashboard + Excel-based business classification</p></div>
+        <div class="cert-card glass reveal"><div class="issuer">FREECODECAMP</div><h4>Data Analysis with Python</h4></div>
+      </div>
+      <div class="achieve-row">
+        <div class="achieve-chip glass reveal"><span class="star">★</span> Completed the Employability Skills Program (EduSkills) — communication, teamwork, workplace readiness.</div>
+        <div class="achieve-chip glass reveal"><span class="star">★</span> Participated in the TechnoVerse Hackathon by Cognizant, collaborating on innovative solutions.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-card glass reveal">
+        <h2>Let's build <span class="grad-text">something.</span></h2>
+        <p>Open to internships, full-stack roles, and collaboration on data-driven projects.</p>
+        <div class="contact-links">
+          <a href="mailto:chhip09876@gmail.com">✉ chhip09876@gmail.com</a>
+          <a href="https://github.com/srikanth-chakali" target="_blank" rel="noopener">⌥ GitHub</a>
+          <a href="https://www.linkedin.com/in/srikanth-chakali-23ata05060/" target="_blank" rel="noopener">in LinkedIn</a>
+        </div>
+
+        <form id="contactForm" class="contact-form" novalidate>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="cf-name">Your name</label>
+              <input type="text" id="cf-name" name="name" required placeholder="Jane Doe">
+            </div>
+            <div class="form-field">
+              <label for="cf-email">Your email</label>
+              <input type="email" id="cf-email" name="email" required placeholder="jane@company.com">
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="cf-subject">What would you like to discuss?</label>
+            <input type="text" id="cf-subject" name="subject" required placeholder="e.g. Full-stack internship opportunity">
+          </div>
+          <div class="form-field">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message" rows="4" placeholder="Tell me a bit more..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-grad" style="width:fit-content; align-self:center;">Send Message →</button>
+          <p id="cf-status" class="form-status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>© 2026 Srikanth Chakali</footer>
+
+<script>
+  // In-page navigation: handle manually so the preview sandbox doesn't
+  // treat same-page hash links (#about, #projects, etc.) as external navigation
+  const reduceMotionV2 = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('[data-scroll]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('data-scroll');
+      const target = document.getElementById(targetId);
+      if (target) {
+        target.scrollIntoView({ behavior: reduceMotionV2 ? 'auto' : 'smooth', block: 'start' });
+        try { history.pushState(null, '', '#' + targetId); } catch (err) {}
+      }
+    });
+  });
+
+  const root = document.documentElement;
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    root.setAttribute('data-theme', root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); } });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+
+  // Contact form -> sends the message directly to your inbox via Formspree
+  // SETUP (one-time, ~2 minutes): go to https://formspree.io, sign up free,
+  // verify chhip09876@gmail.com, create a new form, then paste the endpoint
+  // it gives you (looks like "https://formspree.io/f/abcdwxyz") below.
+  const FORM_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+
+  const contactForm = document.getElementById('contactForm');
+  const cfStatus = document.getElementById('cf-status');
+  const cfButton = contactForm.querySelector('button[type="submit"]');
+
+  function setStatus(text, type) {
+    cfStatus.textContent = text;
+    cfStatus.className = 'form-status' + (type ? ' form-status--' + type : '');
+  }
+
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = document.getElementById('cf-name').value.trim();
+    const email = document.getElementById('cf-email').value.trim();
+    const subject = document.getElementById('cf-subject').value.trim();
+    const message = document.getElementById('cf-message').value.trim();
+
+    if (!name || !email || !subject) {
+      setStatus('Please fill in your name, email, and subject.', 'error');
+      return;
+    }
+
+    if (FORM_ENDPOINT.includes('YOUR_FORM_ID')) {
+      setStatus('✉ Opening your email client with your message pre-filled…', 'info');
+      try {
+        const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+        window.location.href = `mailto:chhip09876@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      } catch (err) {
+        setStatus('Could not open an email client here. Please email me directly at chhip09876@gmail.com, or set up Formspree for direct in-page delivery.', 'error');
+      }
+      return;
+    }
+
+    cfButton.disabled = true;
+    setStatus('Sending…', 'info');
+
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(contactForm)
+      });
+      if (res.ok) {
+        setStatus('✓ Message sent securely — thank you! I\'ll get back to you soon.', 'success');
+        contactForm.reset();
+      } else {
+        throw new Error('Submission failed');
+      }
+    } catch (err) {
+      setStatus('Something went wrong. You can also email me directly at chhip09876@gmail.com.', 'error');
+    } finally {
+      cfButton.disabled = false;
+    }
+  });
+</script>
+</body>
+</html>
