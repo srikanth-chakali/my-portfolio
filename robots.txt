@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://my-portfolio-opal-one-hczqxlr0kf.vercel.app/sitemap.xml
+Sitemap: https://srikanth-chakali-portfolio.vercel.app/sitemap.xml
