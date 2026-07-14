@@ -6,7 +6,7 @@ A modern and responsive **personal portfolio website** built using **HTML5, CSS3
 
 ## 🚀 Live Demo
 
-🔗 **Website:** https://my-portfolio-opal-one-hczqxlr0kf.vercel.app
+🔗 **Website:** https://srikanth-chakali-portfolio.vercel.app/
 
 ---
 
