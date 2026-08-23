@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #0A0D16;
+  color: #EAEDF5;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.light {
+  background-color: #F7F7FB;
+  color: #12141C;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #7C5CFF, #22D3EE);
+  border-radius: 8px;
+}
+
+::selection {
+  background: #7C5CFF;
+  color: #fff;
+}
+
+/* Glass surfaces */
+.glass {
+  background: rgba(18, 24, 38, 0.6);
+  backdrop-filter: blur(10px) saturate(120%);
+  -webkit-backdrop-filter: blur(10px) saturate(120%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  /* backdrop-filter is expensive to repaint on scroll; isolating each
+     surface to its own compositor layer keeps that cost from
+     compounding across every card on the page */
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+body.light .glass {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(18, 20, 28, 0.08);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #7C5CFF 0%, #22D3EE 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(124, 92, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 92, 255, 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Custom cursor (desktop only, hidden by default via JS class toggle) */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #7C5CFF;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(124, 92, 255, 0.6);
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+  transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
