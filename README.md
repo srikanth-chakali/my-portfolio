@@ -7,8 +7,11 @@ I'm a Computer Science undergraduate who enjoys building **real-world web applic
 ## 🛠️ Skills
 
 **Languages:** Python, SQL, Java
+
 **Web:** HTML, CSS, JavaScript, React, Flask
+
 **Database:** PostgreSQL, MySQL
+
 **Tools:** Git, GitHub, VS Code
 
 ## 🚀 Featured Projects
@@ -40,9 +43,9 @@ G. Pullaiah College of Engineering & Technology
 
 ## 🔗 Connect With Me
 
-🌐 **Portfolio:** [Your Portfolio Link]
-💼 **LinkedIn:** [Your LinkedIn]
-🐙 **GitHub:** [Your GitHub]
+🌐 **Portfolio:** https://srikanth-chakali-portfolio.vercel.app/
+💼 **LinkedIn:** https://www.linkedin.com/in/srikanth-chakali-23ata05060/
+🐙 **GitHub:** https://github.com/srikanth-chakali
 
 ---
 
