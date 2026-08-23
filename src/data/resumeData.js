@@ -69,8 +69,8 @@ export const projects = [
     points: [
       'Integrated a Formspree-powered contact form and fully responsive design, improving accessibility and recruiter engagement across 3+ device breakpoints (mobile, tablet, desktop).',
     ],
-    github: 'https://github.com/REPLACE_WITH_YOUR_USERNAME/portfolio',
-    demo: 'https://REPLACE_WITH_YOUR_LIVE_DEMO_URL',
+    github: 'https://github.com/srikanth-chakali/my-portfolio',
+    demo: 'https://srikanth-chakali-portfolio.vercel.app/',
   },
 ]
 
