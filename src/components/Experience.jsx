@@ -5,7 +5,7 @@ import { experience } from '../data/resumeData'
 
 export default function Experience() {
   return (
-    <section id="experience" className="relative py-28 md:py-36 px-6 md:px-8">
+    <section id="experience" className="relative py-28 md:py-36 px-6 sm:px-10 lg:px-16 xl:px-20">
       <div className="max-w-4xl mx-auto">
         <Reveal>
           <span className="font-mono text-xs text-cyan tracking-widest uppercase">

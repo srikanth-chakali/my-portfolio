@@ -4,8 +4,8 @@ import { skillGroups } from '../data/resumeData'
 
 export default function Skills() {
   return (
-    <section id="skills" className="relative py-28 md:py-36 px-6 md:px-8">
-      <div className="max-w-6xl mx-auto">
+    <section id="skills" className="relative py-28 md:py-36 px-6 sm:px-10 lg:px-16 xl:px-20">
+      <div className="max-w-7xl mx-auto">
         <Reveal>
           <span className="font-mono text-xs text-cyan tracking-widest uppercase">
             Skills

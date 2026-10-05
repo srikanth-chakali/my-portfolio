@@ -24,8 +24,8 @@ export default function Navbar({ theme, toggleTheme }) {
         }`}
       >
         <div
-          className={`mx-auto max-w-6xl px-5 flex items-center justify-between rounded-2xl transition-all duration-300 ${
-            scrolled ? 'glass px-5 py-2.5 shadow-lg shadow-black/20' : ''
+          className={`mx-auto max-w-7xl px-6 sm:px-10 lg:px-12 flex items-center justify-between rounded-2xl transition-all duration-300 ${
+            scrolled ? 'glass px-6 py-2.5 shadow-lg shadow-black/20' : ''
           }`}
         >
           <a

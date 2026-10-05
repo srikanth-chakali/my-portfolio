@@ -4,9 +4,9 @@ import { education, certifications, achievements } from '../data/resumeData'
 
 export default function Education() {
   return (
-    <section id="education" className="relative py-28 md:py-36 px-6 md:px-8">
+    <section id="education" className="relative py-28 md:py-36 px-6 sm:px-10 lg:px-16 xl:px-20">
       <div className="absolute inset-0 -z-10 bg-grad-radial-cyan opacity-40" />
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <Reveal>
           <span className="font-mono text-xs text-cyan tracking-widest uppercase">
             Education &amp; Certifications

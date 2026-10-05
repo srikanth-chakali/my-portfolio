@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import ScrollProgress from './components/ui/ScrollProgress'
 import CustomCursor from './components/ui/CustomCursor'
+import Preloader from './components/ui/Preloader'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -14,6 +15,7 @@ import FloatingShapes from './components/three/FloatingShapes'
 
 export default function App() {
   const [theme, setTheme] = useState('dark')
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     document.body.classList.toggle('light', theme === 'light')
@@ -23,6 +25,7 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen">
+      {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
       <ScrollProgress />
       <CustomCursor />
       <Navbar theme={theme} toggleTheme={toggleTheme} />
